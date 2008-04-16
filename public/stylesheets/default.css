@@ -1,0 +1,98 @@
+div#top {
+	background-color: #efefef;
+	padding: 10px 10px 10px 10px;
+}
+
+ul#menu {
+	text-align: left;
+	margin: 1em 0 1em 0;
+	list-style-type: none;
+	padding: 3px 10px 3px 10px;
+}
+
+ul#menu a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #330000;
+}
+
+ul#menu a:hover, a:active {
+	color: #FFFFFF;
+	background-color: #330000;
+}
+
+ul#menu li{
+	padding: 0px 5px 0px 0px;
+	display: inline;
+}
+
+div#main {
+	margin-top: 10px;
+	width: 80%;
+	float: left;
+	padding: 10px 10px 10px 10px;
+	border-left: thin solid #efe;
+	border-top: thin solid #efe;
+	border-right: thick solid #efe;
+	border-bottom: thick solid #efe;
+}
+
+div#side {
+	margin: 10px 0px 0px 10px;
+	float: left;
+	width: 15%;
+	background-color: #CCFFCC;
+	padding: 10px 10px 10px 10px;
+}
+
+div#tip {
+	background-color: #FFFF99;
+	border: thin solid #000;
+	font-family: 'Verdana';
+	font-size: 10px;
+	padding: 3px 3px 3px 3px;
+}
+
+table#grid {
+	width: 100%;
+	border-spacing: 0px;
+	border: thin solid #000;
+}
+
+table#grid th {
+	text-align: left;
+	background-color: #efefef;
+	border: thin solid #Fff;
+}
+
+table#grid td {
+	border: thin solid #ccc;
+}
+
+table#grid th#action {
+	text-align: center;
+}
+
+table#grid td#action {
+	text-align: center;
+}
+
+img#user_photo {
+	background-color: #fff;
+	padding: 3px 3px 20px 3px;
+	border: #000 1px solid;
+}
+
+div#postit {
+	border-right: thin solid #9999CC;
+	border-bottom: thin solid #9999CC;
+	background-color: #FFFF66;
+	font-size: 10px;
+	width: 30%;
+	padding: 2px;
+	height: 80px;
+	float: left;
+	margin: 1px;
+	color: #000;		
+	font-style: italic;
+}

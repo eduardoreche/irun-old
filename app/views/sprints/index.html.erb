@@ -1,0 +1,27 @@
+<h1>Sprints</h1>
+
+<table id="grid">
+  <tr>
+    <th>Commentário</th>
+    <th>Product Backlog</th>
+		<th id="action">Ativo</th>
+		<th colspan="5" id="action">Ações</th>
+  </tr>
+
+<% for sprint in @sprints %>
+  <tr>
+    <td><%=h sprint.comments %></td>
+    <td><%=h sprint.backlog.name %></td>
+		<td id="action"><%=h (sprint.active ? 'Sim': 'Não') %></td>
+		<td id="action"><%= link_to 'Tarefas', sprint_tasks_path(sprint) %>
+		<td id="action"><%= link_to 'Ativar', activate_sprint_path(sprint) %></td>
+    <td id="action"><%= link_to 'Mostrar', sprint %></td>
+    <td id="action"><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
+    <td id="action"><%= link_to 'Apagar', sprint, :confirm => 'Você tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Sprint', new_sprint_path %>

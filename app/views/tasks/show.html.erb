@@ -1,0 +1,45 @@
+ <h2> <%= @task.description %> </h2>
+
+<p>
+  <b>Previsão de horas:</b>
+  <%=h @task.hours %>
+</p>
+
+<p>
+  <b>Sprint:</b>
+  <%=h @task.sprint.comments %>
+</p>
+
+<p>
+  <b>Ítem do Product Backlog:</b>
+  <%=h @task.backlog_item.description %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @task.status %>
+</p>
+
+<% if @task.status != "Aberto" %>
+	
+	<%= render_user_image(@task.user) %>
+	<br/>
+	
+	<%= link_to @task.user.name, user_path(@task.user) %> <br/>
+
+	  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
+		<% if @task.status == "Pronto" %>
+			<br/>
+	  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %>
+		<% end %>
+	
+<% end %>
+
+<p>
+	<b>Story case</b><br/>
+	<%= textilize(@task.story) %>
+</p>
+
+<br/><br/>
+<%= link_to 'Editar', edit_sprint_task_path(@sprint,@task) %> |
+<%= link_to 'Voltar', sprint_tasks_path(@sprint) %>

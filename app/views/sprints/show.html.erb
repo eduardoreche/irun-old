@@ -1,0 +1,12 @@
+<p>
+  <%= textilize(@sprint.comments) %>
+</p>
+
+<p>
+  <b>Product Backlog:</b>
+  <%=h @sprint.backlog.comment %>
+</p>
+
+
+<%= link_to 'Editar', edit_sprint_path(@sprint) %> |
+<%= link_to 'Voltar', sprints_path %>

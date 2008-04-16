@@ -1,0 +1,25 @@
+<h1>Produtos</h1>
+
+<table id="grid">
+  <tr>
+    <th>Nome</th>
+    <th>Comentários</th>
+    <th>Imagem</th>
+		<th id="action" colspan="3">Ações</th>
+  </tr>
+
+<% for product in @products %>
+  <tr>
+    <td><%=h product.name %></td>
+    <td><%=h product.comments %></td>
+    <td><%=h product.image %></td>
+    <td id="action"><%= link_to 'Mostrar', product %></td>
+    <td id="action"><%= link_to 'Editar', edit_product_path(product) %></td>
+    <td id="action"><%= link_to 'Apagar', product, :confirm => 'Você tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Produto', new_product_path %>

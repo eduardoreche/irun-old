@@ -1,0 +1,15 @@
+<%- if !@user.image -%>
+	<%= link_to "<img src='/images/users/nobody.jpg' id='user_photo'/>", @user %>			
+<%- else -%>
+	<%= link_to "<img src='/images/users/#{@user.image}' id='user_photo'/>", @user %>
+<%- end -%>
+
+<p>
+  <b><%= @user.name %></b><br/>
+	<%= auto_link(@user.email) %>
+	<div id="comments">
+  	<%= textilize(@user.comment) %>
+	</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

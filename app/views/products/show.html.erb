@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @product.name %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= textilize(@product.comments) %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%=h @product.image %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

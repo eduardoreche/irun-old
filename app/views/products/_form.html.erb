@@ -1,0 +1,24 @@
+<% form_for(@product) do |f| %>
+  <p>
+    <b>Nome</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Comentários</b><br />
+    <%= f.text_area :comments %>
+  </p>
+
+  <p>
+    <b>Imagem</b><br />
+    <%= f.file_field :image %>
+  </p>
+
+  <p>
+    <%= f.submit "Salvar" %>
+  </p>
+<% end %>
+
+<% content_for :side do %>
+	<%= render_formatting_help %>
+<% end %>

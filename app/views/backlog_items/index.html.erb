@@ -1,0 +1,33 @@
+<h1>Ítens de Product Backlog</h1>
+
+<h2><%= @backlog.name %></h2>
+ 
+<table id="grid">
+  <tr>
+    <th>Descrição</th>
+    <th>Produto</th>
+    <th id="action">Iteração</th>
+    <th id="action">Pontos</th>
+    <th>Usuário Responsável</th>
+		<th id="action" colspan="3">Ações</th>
+  </tr>
+
+<% for backlog_item in @backlog_items %>
+  <tr>
+    <td><%=h backlog_item.description %></td>
+    <td><%=h backlog_item.product.name %></td>
+    <td id="action"><%=h backlog_item.iteration %></td>
+    <td id="action"><%=h backlog_item.points %></td>
+    <td><%=h backlog_item.user.name %></td>
+    <td id="action"><%= link_to 'Mostrar', backlog_backlog_item_path(@backlog,backlog_item) %></td>
+    <td id="action"><%= link_to 'Editar', edit_backlog_backlog_item_path(@backlog,backlog_item) %></td>
+    <td id="action"><%= link_to 'Apagar', backlog_backlog_item_path(@backlog,backlog_item), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo ítem de Product Backlog', new_backlog_backlog_item_path(@backlog) %>
+ | 
+<%= link_to 'Voltar para Product Backlog', backlogs_path %>

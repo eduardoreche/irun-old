@@ -1,0 +1,46 @@
+<%= error_messages_for :task %>
+
+<% form_for([@sprint,@task]) do |f| %>
+	<p>
+  	<b>Product Backlog</b><br />
+  	<%= @sprint.backlog.name %>
+	</p>
+
+	<p>
+  	<b>Sprint</b><br />
+  	<%= textilize(@sprint.comments) %>
+	</p>
+	
+  <p>
+    <b>Ítem de Product Backlog</b><br />
+    <%= f.select :backlog_item_id, @backlog_items.collect{|b| ["#{b.product.name}: #{b.description}", b.id]}, :prompt => "-- Selecione --" %>
+  </p>
+	
+  <p>
+    <b>Descrição</b><br />
+    <%= f.text_field :description, :size => 60 %>
+  </p>
+
+  <p>
+    <b>Previsão de horas</b><br />
+    <%= f.text_field :hours %>
+  </p>
+
+  <p>
+    <b>Status</b><br />
+    <%= f.select :status, ["Aberto", "Alocado", "Pronto"] %>
+  </p>
+
+  <p>
+    <b>Story case</b><br />
+    <%= f.text_area :story, :rows => 7, :cols => 60 %>
+  </p>
+
+  <p>
+    <%= f.submit "Salvar" %>
+  </p>
+<% end %>
+
+<% content_for :side do %>
+	<%= render_formatting_help %>
+<% end %>

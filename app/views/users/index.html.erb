@@ -1,0 +1,33 @@
+<h1>Usuários</h1>
+
+<%= link_to 'New user', new_user_path %> 
+<br/>
+
+<table align="center" style="width: 80%; background-color:#fff;border-space:0px;border:thin solid #000">
+<%- for user in @users -%>
+	<%- if (@users.index(user) == 0) || ((@users.index(user)+1)%2 != 0) -%> 
+		<tr>
+	<%- end -%>
+		<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
+			<%- if !user.image -%>
+				<%= link_to "<img src='/images/users/nobody.jpg' id='user_photo'/>", user %>			
+			<%- else -%>
+				<%= link_to "<img src='/images/users/#{user.image}' id='user_photo'/>", user %>
+			<%- end -%>
+			<br/>
+			<h3><%= user.name %></h3> <br/>
+			<%= auto_link(user.email) %> <br/>
+			<%= textilize(user.comment) %> <br/>
+			<%= link_to 'Editar', edit_user_path(user) %> or 
+			<%= link_to 'Apagar', user, :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+	<%- if @users.index(user)%2 > 0 -%> 
+		</tr>
+	<%- end -%>
+<%- end -%>
+
+<% if @users.size % 2 > 0 %>
+		<td>&nbsp;</td>
+	</tr>
+<% end %>
+</table>
