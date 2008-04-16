@@ -1,6 +1,6 @@
 <h1>Editando Tarefa</h1>
 
-<%= render :partial => 'form', :locals => {:bt_name => "Edit"} %>
+<%= render :partial => 'form' %>
 
-<%= link_to 'Show', sprint_task_path(@sprint,@task) %> |
-<%= link_to 'Back', sprint_tasks_path %>
+<%= link_to 'Mostrar', sprint_task_path(@sprint,@task) %> |
+<%= link_to 'Voltar', sprint_tasks_path %>

@@ -9,11 +9,7 @@
 		<tr>
 	<%- end -%>
 		<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
-			<%- if !user.image -%>
-				<%= link_to "<img src='/images/users/nobody.jpg' id='user_photo'/>", user %>			
-			<%- else -%>
-				<%= link_to "<img src='/images/users/#{user.image}' id='user_photo'/>", user %>
-			<%- end -%>
+			<%= render_user_image(user) %>
 			<br/>
 			<h3><%= user.name %></h3> <br/>
 			<%= auto_link(user.email) %> <br/>

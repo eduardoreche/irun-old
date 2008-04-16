@@ -45,6 +45,7 @@ class BacklogItemsController < ApplicationController
   # POST /backlog_items.xml
   def create
     @backlog_item = @backlog.backlog_items.build(params[:backlog_item])
+    @backlog_item.user = session[:user]
 
     respond_to do |format|
       if @backlog_item.save
@@ -62,7 +63,8 @@ class BacklogItemsController < ApplicationController
   # PUT /backlog_items/1.xml
   def update
     @backlog_item = BacklogItem.find(params[:id])
-
+    @backlog_item.user = session[:user]
+    
     respond_to do |format|
       if @backlog_item.update_attributes(params[:backlog_item])
         flash[:notice] = 'BacklogItem was successfully updated.'

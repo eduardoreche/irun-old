@@ -9,7 +9,7 @@
 
   <p>
     <b>Descrição</b><br />
-    <%= f.text_area :description, :rows => 3 %>
+    <%= f.text_area :description, :rows => 15, :cols => 100 %>
   </p>
 
   <p>
@@ -23,11 +23,10 @@
   </p>
 
   <p>
-    <b>Usuário</b><br />
-    <%= f.text_field :user_id %>
-  </p>
-
-  <p>
     <%= f.submit "Salvar" %>
   </p>
+<% end %>
+
+<% content_for :side do %>
+	<%= render_formatting_help %>
 <% end %>

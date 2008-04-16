@@ -57,6 +57,8 @@
 	
 </style>
 
+<% if @sprint %>
+
 	<div id="item_backlog_title">
 		<b>Ítem</b>
 	</div>
@@ -70,39 +72,42 @@
 		<b>Pronto</b>	
 	</div>
 
-<% @sprint.tasks.group_by(&:backlog_item).each do |backlog_item,tasks| %>
+	<% @sprint.tasks.group_by(&:backlog_item).each do |backlog_item,tasks| %>
 	
-	<div id="item_group">	
+		<div id="item_group">	
 		
-		<div id="item_backlog">
-			<b><%= backlog_item.product.name %></b>
-			<br/><br/>
-			<%= backlog_item.description %>
-		</div> 
+			<div id="item_backlog">
+				<b><%= backlog_item.product.name %></b>
+				<br/><br/>
+				<%= backlog_item.description %>
+			</div> 
 		
-			<div id="status">
-				<% for task in tasks.find_all{|t| t.status == "Aberto"} %>
-					<div id="postit">
-						<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
-					</div>
-				<% end %>
-			</div>
+				<div id="status">
+					<% for task in tasks.find_all{|t| t.status == "Aberto"} %>
+						<div id="postit">
+							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+						</div>
+					<% end %>
+				</div>
 
-			<div id="status">
-				<% for task in tasks.find_all{|t| t.status == "Alocado"} %>
-					<div id="postit">
-						<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
-					</div>
-				<% end %>
-			</div>
+				<div id="status">
+					<% for task in tasks.find_all{|t| t.status == "Alocado"} %>
+						<div id="postit">
+							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+						</div>
+					<% end %>
+				</div>
 
-			<div id="status">
-				<% for task in tasks.find_all{|t| t.status == "Pronto"} %>
-					<div id="postit">
-						<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
-					</div>
-				<% end %>
-			</div>
+				<div id="status">
+					<% for task in tasks.find_all{|t| t.status == "Pronto"} %>
+						<div id="postit">
+							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+						</div>
+					<% end %>
+				</div>
 		
-	</div>
+		</div>
+	<% end %>
+<% else %>
+	Bem-vindo ao <b>iRun</b>
 <% end %>

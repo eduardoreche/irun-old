@@ -10,8 +10,8 @@
 <% for backlog in @backlogs %>
   <tr>
     <td><%=h backlog.name %></td>
-    <td><%=h backlog.comment %></td>
-		<td id="action"><%= link_to 'Ítens', backlog_backlog_items_path(backlog) %>
+    <td><%= textilize(backlog.comment) %></td>
+		<td id="action"><%= link_to 'Itens', backlog_backlog_items_path(backlog) %>
     <td id="action"><%= link_to 'Mostrar', backlog %></td>
     <td id="action"><%= link_to 'Editar', edit_backlog_path(backlog) %></td>
     <td id="action"><%= link_to 'Apagar', backlog, :confirm => 'Você tem certeza?', :method => :delete %></td>

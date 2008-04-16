@@ -4,15 +4,15 @@
   <tr>
     <th>Nome</th>
     <th>Comentários</th>
-    <th>Imagem</th>
+    <th id="action">Imagem</th>
 		<th id="action" colspan="3">Ações</th>
   </tr>
 
 <% for product in @products %>
   <tr>
     <td><%=h product.name %></td>
-    <td><%=h product.comments %></td>
-    <td><%=h product.image %></td>
+    <td><%= textilize(product.comments) %></td>
+    <td id="action"><%= render_product_image(product) %></td>
     <td id="action"><%= link_to 'Mostrar', product %></td>
     <td id="action"><%= link_to 'Editar', edit_product_path(product) %></td>
     <td id="action"><%= link_to 'Apagar', product, :confirm => 'Você tem certeza?', :method => :delete %></td>

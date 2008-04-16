@@ -1,27 +1,6 @@
-<h1>Editing developer</h1>
+<h1>Editando desenvolvedor</h1>
 
-<%= error_messages_for :developer %>
+<%= render :partial => 'form' %>
 
-<% form_for(@developer) do |f| %>
-  <p>
-    <b>Sprint</b><br />
-    <%= f.text_field :sprint_id %>
-  </p>
-
-  <p>
-    <b>User</b><br />
-    <%= f.text_field :user_id %>
-  </p>
-
-  <p>
-    <b>Hours</b><br />
-    <%= f.text_field :hours %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @developer %> |
-<%= link_to 'Back', developers_path %>
+<%= link_to 'Mostrar', sprint_developer_path(@sprint,@developer) %> |
+<%= link_to 'Voltar', sprint_developers_path(@sprint) %>

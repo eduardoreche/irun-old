@@ -1,28 +1,30 @@
 <p>
-  <b>Description:</b>
+  <b>Produto:</b>
+  <%=h @backlog_item.product.name %>
+</p>
+
+<p>
+  <b>Descrição:</b>
   <%= textilize(@backlog_item.description) %>
 </p>
 
 <p>
-  <b>Product:</b>
-  <%=h @backlog_item.product_id %>
-</p>
-
-<p>
-  <b>Iteration:</b>
+  <b>Iteração:</b>
   <%=h @backlog_item.iteration %>
 </p>
 
 <p>
-  <b>Points:</b>
+  <b>Pontos:</b>
   <%=h @backlog_item.points %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%=h @backlog_item.user_id %>
+  <b>Usuário responsável:</b><br/>
+	<%= render_user_image(@backlog_item.user) %>
+  <%=h @backlog_item.user.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_backlog_backlog_item_path(@backlog,@backlog_item) %> |
-<%= link_to 'Back', backlog_backlog_items_path(@backlog) %>
+<%= link_to 'Novo', new_backlog_backlog_item_path(@backlog) %> |
+<%= link_to 'Editar', edit_backlog_backlog_item_path(@backlog,@backlog_item) %> |
+<%= link_to 'Voltar', backlog_backlog_items_path(@backlog) %>
