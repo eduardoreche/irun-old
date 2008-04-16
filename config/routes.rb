@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :developers
 
-  map.resources :sprints, :has_many => :tasks,
+
+  map.resources :sprints, :has_many => [:tasks,:developers],
                 :member => {:activate => :get}
 
   map.resources :backlogs, :has_many => [:backlog_items]

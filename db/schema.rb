@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 8) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "backlog_items", :force => true do |t|
     t.string   "description"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 8) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "developers", :force => true do |t|
+    t.integer  "sprint_id"
+    t.integer  "user_id"
+    t.integer  "hours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "developers", ["sprint_id"], :name => "fk_developers_sprints"
+  add_index "developers", ["user_id"], :name => "fk_developers_users"
 
   create_table "products", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,27 @@
+<h1>Editing developer</h1>
+
+<%= error_messages_for :developer %>
+
+<% form_for(@developer) do |f| %>
+  <p>
+    <b>Sprint</b><br />
+    <%= f.text_field :sprint_id %>
+  </p>
+
+  <p>
+    <b>User</b><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <b>Hours</b><br />
+    <%= f.text_field :hours %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @developer %> |
+<%= link_to 'Back', developers_path %>

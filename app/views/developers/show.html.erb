@@ -1,0 +1,17 @@
+<p>
+  <%= textilize(@sprint.comments) %>
+</p>
+
+<p>
+  <%= render_user_image(@developer.user) %><br/>
+  <%=h @developer.user.name %>
+</p>
+
+<p>
+  <b>Total de Horas:</b>
+  <%=h @developer.hours %>
+</p>
+
+
+<%= link_to 'Edit', edit_sprint_developer_path(@sprint,@developer) %> |
+<%= link_to 'Back', sprint_developers_path(@sprint) %>

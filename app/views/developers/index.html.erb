@@ -1,0 +1,30 @@
+<h1>Desenvolvedores</h1>
+
+<%= textilize(@sprint.comments) %>
+
+<table id="grid">
+  <tr>
+    <th>Desenvolvedor</th>
+    <th id="action">Horas</th>
+		<th id="action" colspan="3">Ações</th>
+  </tr>
+
+<% for developer in @developers %>
+  <tr>
+    <td>
+			<%= render_user_image(developer.user) %>
+			<%=h developer.user.name %>
+		</td>
+    <td id="action"><%=h developer.hours %></td>
+    <td id="action"><%= link_to 'Mostrar', sprint_developer_path(@sprint,developer) %></td>
+    <td id="action"><%= link_to 'Editar', edit_sprint_developer_path(@sprint,developer) %></td>
+    <td id="action"><%= link_to 'Apagar', sprint_developer_path(@sprint,developer), :confirm => 'Você tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Desenvolvedor', new_sprint_developer_path(@sprint) %>
+<br/>
+<%= link_to 'Voltar para Sprint', sprints_path %>

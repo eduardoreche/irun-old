@@ -1,12 +1,45 @@
-<p>
-  <%= textilize(@sprint.comments) %>
-</p>
+<style type="text/css" media="screen">
+	.developers {
+		float: left;
+		width: 48%;
+		background-color: #efe;
+		border: thin solid #000;
+		padding: 1px;
+		margin: 2px;
+		text-align: center;
+	}
+</style>
 
-<p>
-  <b>Product Backlog:</b>
-  <%=h @sprint.backlog.comment %>
-</p>
+<div style="float:left; width: 58%; padding: 5px;">
+	<p>
+	  <%= textilize(@sprint.comments) %>
+	</p>
 
+	<p>
+	  <b>Product Backlog:</b>
+	  <%=h @sprint.backlog.comment %>
+	</p>
 
-<%= link_to 'Editar', edit_sprint_path(@sprint) %> |
-<%= link_to 'Voltar', sprints_path %>
+	<p>
+		<b>Total de horas dos desenvolvedores: </b> <%= @sprint.developers_hours %> <br/>
+		<b>Total de horas das tarefas: </b> <%= @sprint.tasks_hours %> 	
+	</p>
+
+	<p>
+		<%= link_to 'Editar', edit_sprint_path(@sprint) %> |
+		<%= link_to 'Voltar', sprints_path %>
+	</p>
+</div>
+<div style="float:left; width: 40%">
+	<p>
+		<b>Desenvolvedores:</b> <br/>
+		<%- for developer in @sprint.developers -%>
+			<div class="developers">
+				<%= render_user_image(developer.user) %> <br/>
+				<%= developer.user.name %> <br/>
+				<%= developer.hours %> horas
+			</div>
+		<%- end -%>
+	</p>
+	
+</div>

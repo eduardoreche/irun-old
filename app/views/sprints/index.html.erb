@@ -10,11 +10,11 @@
 
 <% for sprint in @sprints %>
   <tr>
-    <td><%=h sprint.comments %></td>
+    <td><%= textilize(sprint.comments) %></td>
     <td><%=h sprint.backlog.name %></td>
-		<td id="action"><%=h (sprint.active ? 'Sim': 'Não') %></td>
+		<td id="action"><%= link_to (sprint.active ? 'Sim': 'Não'), activate_sprint_path(sprint) %></td>
 		<td id="action"><%= link_to 'Tarefas', sprint_tasks_path(sprint) %>
-		<td id="action"><%= link_to 'Ativar', activate_sprint_path(sprint) %></td>
+		<td id="action"><%= link_to 'Desenvolvedores', sprint_developers_path(sprint) %>
     <td id="action"><%= link_to 'Mostrar', sprint %></td>
     <td id="action"><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
     <td id="action"><%= link_to 'Apagar', sprint, :confirm => 'Você tem certeza?', :method => :delete %></td>

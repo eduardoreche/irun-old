@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  comments: MyText
+  backlog_id: 1
+
+two:
+  comments: MyText
+  backlog_id: 1

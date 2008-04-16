@@ -1,0 +1,21 @@
+<%= error_messages_for :developer %>
+
+<% form_for([@sprint,@developer]) do |f| %>
+  <p>
+    <%= textilize(@sprint.comments) %>
+  </p>
+
+  <p>
+    <b>Usuário</b><br />
+    <%= f.select :user_id, @users.collect {|u| [u.name, u.id]}, :prompt => "-- Selecione --"  %>
+  </p>
+
+  <p>
+    <b>Horas</b><br />
+    <%= f.text_field :hours, :size => 4 %>
+  </p>
+
+  <p>
+    <%= f.submit "Salvar" %>
+  </p>
+<% end %>

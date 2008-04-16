@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  story: MyText
+  hours: 1
+  backlog_item_id: 1
+  sprint_id: 1
+  status: MyString
+  user_id: 1
+  init: 2008-04-08
+  end: 2008-04-08
+
+two:
+  description: MyString
+  story: MyText
+  hours: 1
+  backlog_item_id: 1
+  sprint_id: 1
+  status: MyString
+  user_id: 1
+  init: 2008-04-08
+  end: 2008-04-08
