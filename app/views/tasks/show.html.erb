@@ -22,16 +22,17 @@
 
 <% if @task.status != "Aberto" %>
 	
-	<%= render_user_image(@task.user) %>
-	<br/>
+		<%= render_user_image(@task.user) %>
+		<br/>
 	
-	<%= link_to @task.user.name, user_path(@task.user) %> <br/>
+		<%= link_to @task.user.name, user_path(@task.user) %> <br/>
 
-	  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
-		<% if @task.status == "Pronto" %>
-			<br/>
-	  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %>
-		<% end %>
+		  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
+			<% if @task.status == "Pronto" %>
+				<br/>
+		  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %>
+			<% end %>
+			
 	
 <% end %>
 

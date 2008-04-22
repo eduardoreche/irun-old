@@ -6,7 +6,8 @@ class BacklogItemsController < ApplicationController
   # GET /backlog_items
   # GET /backlog_items.xml
   def index
-    @backlog_items = @backlog.backlog_items.find(:all, :order => ["points desc"])
+    @backlog_items = @backlog.backlog_items.find(:all, 
+                                                 :order => ["ifnull(iteration,999999999), points desc"])
 
     respond_to do |format|
       format.html # index.html.erb

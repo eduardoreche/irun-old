@@ -58,7 +58,7 @@
 </style>
 
 <% if @sprint %>
-
+	
 	<div id="item_backlog_title">
 		<b>Ítem</b>
 	</div>
@@ -79,13 +79,14 @@
 			<div id="item_backlog">
 				<b><%= backlog_item.product.name %></b>
 				<br/><br/>
-				<%= backlog_item.description %>
+				<%= textilize(backlog_item.description) %>
 			</div> 
 		
 				<div id="status">
 					<% for task in tasks.find_all{|t| t.status == "Aberto"} %>
-						<div id="postit">
-							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+						<div id="postit">							
+							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
+							<b style="color:red"><%= task.hours %></b>
 						</div>
 					<% end %>
 				</div>
@@ -93,7 +94,8 @@
 				<div id="status">
 					<% for task in tasks.find_all{|t| t.status == "Alocado"} %>
 						<div id="postit">
-							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
+							<b style="color:red"><%= task.hours %></b>
 						</div>
 					<% end %>
 				</div>
@@ -101,7 +103,8 @@
 				<div id="status">
 					<% for task in tasks.find_all{|t| t.status == "Pronto"} %>
 						<div id="postit">
-							<%= link_to (task.description.size > 50 ? task.description[0..50] +"..." : task.description), sprint_task_path(@sprint,task) %>
+							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
+							<b style="color:red"><%= task.hours %></b>
 						</div>
 					<% end %>
 				</div>

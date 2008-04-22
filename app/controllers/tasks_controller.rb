@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = @sprint.tasks.find(:all)
+    @tasks = @sprint.tasks.find(:all, :order => "backlog_item_id, description")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +45,7 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = @sprint.tasks.build(params[:task])
+    @task.status = "Aberto"
 
     respond_to do |format|
       if @task.save

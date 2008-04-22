@@ -2,6 +2,7 @@ class BacklogItem < ActiveRecord::Base
   
   belongs_to :product
   belongs_to :user
+  has_many :tasks
   
   validates_presence_of :description
   validates_presence_of :product_id

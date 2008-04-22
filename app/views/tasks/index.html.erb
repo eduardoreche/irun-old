@@ -2,6 +2,10 @@
 
 <%= textilize(@sprint.comments) %>
 
+<%= link_to 'Nova tarefa', new_sprint_task_path(@sprint) %>
+ | 
+<%= link_to 'Voltar para sprints', sprints_url %>
+
 <table id="grid">
   <tr>
     <th>Descrição</th>
@@ -18,7 +22,7 @@
   <tr>
     <td><%=h task.description %></td>
     <td id="action"><%=h task.hours %></td>
-    <td><%=h task.backlog_item.description %></td>
+    <td><%= textilize(task.backlog_item.description) %></td>
     <td><%=h task.status %></td>
     <td><%= (task.user ? task.user.name.split[0] : '') %></td>
     <td><%= (task.init ? task.init.strftime("%d/%m %H:%M") : '') %></td>
@@ -29,8 +33,6 @@
   </tr>
 <% end %>
 </table>
-
-<br />
 
 <%= link_to 'Nova tarefa', new_sprint_task_path(@sprint) %>
  | 
