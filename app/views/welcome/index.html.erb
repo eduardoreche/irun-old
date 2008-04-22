@@ -2,7 +2,7 @@
 
 	div#item_backlog_title {
 		margin: 1px; 
-		border: thin solid #000;
+		border: 1px solid #000;
 		width: 23%;
 		float:left;
 		text-align:center;
@@ -24,16 +24,17 @@
 	
 	div#status_title {
 		margin: 1px;
-		border: thin solid #000;
-		width: 25%;
+		border: 1px solid #000;
+		width: 24%;
 		float:left;
 		text-align:center;
 	}
 	
 	div#status {
+		min-height: 177px;
 		margin: 1px;
-		border: thin solid #000;
-		width: 25%;
+		border: 1px solid #000;
+		width: 24%;
 		float:left;
 		text-align:center;
 	}
@@ -58,6 +59,8 @@
 </style>
 
 <% if @sprint %>
+	<h2>Sprint</h2>
+	<%= textilize(@sprint.comments) %>
 	
 	<div id="item_backlog_title">
 		<b>Ítem</b>

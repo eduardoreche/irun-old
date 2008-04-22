@@ -31,8 +31,8 @@ div#main {
 	width: 80%;
 	float: left;
 	padding: 10px 10px 10px 10px;
-	border-left: thin solid #efe;
-	border-top: thin solid #efe;
+	border-left: 1px solid #efe;
+	border-top: 1px solid #efe;
 	border-right: thick solid #efe;
 	border-bottom: thick solid #efe;
 }
@@ -47,7 +47,7 @@ div#side {
 
 div#tip {
 	background-color: #FFFF99;
-	border: thin solid #000;
+	border: 1px solid #000;
 	font-family: 'Verdana';
 	font-size: 10px;
 	padding: 3px 3px 3px 3px;
@@ -56,17 +56,17 @@ div#tip {
 table#grid {
 	width: 100%;
 	border-spacing: 0px;
-	border: thin solid #000;
+	border: 1px solid #000;
 }
 
 table#grid th {
 	text-align: left;
 	background-color: #efefef;
-	border: thin solid #Fff;
+	border: 1px solid #Fff;
 }
 
 table#grid td {
-	border: thin solid #ccc;
+	border: 1px solid #ccc;
 }
 
 table#grid th#action {
@@ -84,8 +84,9 @@ img#user_photo {
 }
 
 div#postit {
-	border-right: thin solid #9999CC;
-	border-bottom: thin solid #9999CC;
+	word-wrap:break-word;
+	border-right: 1px solid #9999CC;
+	border-bottom: 1px solid #9999CC;
 	background-color: #FFFF66;
 	font-size: 10px;
 	width: 30%;
