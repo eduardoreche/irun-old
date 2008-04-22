@@ -15,6 +15,10 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.find(:all, 
+                              :conditions => "sprints.active is true",
+                              :include => [:sprint,:backlog_item],
+                              :order => "tasks.status, backlog_items.product_id")
 
     respond_to do |format|
       format.html # show.html.erb

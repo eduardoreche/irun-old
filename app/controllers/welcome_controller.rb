@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
   def index
     
     @sprint = Sprint.find(:first,
-                          :conditions => "active is true and #{filter}")
+                          :conditions => "active is true")
                           
 #    @products = Product.find_by_sql("select distinct p.*
 #                                      from products p

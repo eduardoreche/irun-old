@@ -31,9 +31,9 @@
 		<div id="side">
 			<% if session[:user] %>
 				<div align="center">
-					<img src="/images/users/<%= session[:user].image %>" id="user_photo"/><br/>
+					<%= render_user_image(session[:user]) %><br/>
+					<%= session[:user].name.split[0] %>
 				</div>
-				<%= session[:user].name %>
 			<% end %>
 			<p>
 			<%= yield(:side)%>

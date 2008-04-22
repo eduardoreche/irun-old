@@ -1,12 +1,5 @@
 <%= error_messages_for :task %>
 
-<% if session[:user].email == 'scandrade@coodetec.com.br' %>
-<h1 style="color:red;">
-	Sidgley, sempre inclua uma tarefa com o status de ABERTO. <BR/>
-	Obrigado.
-</h1>
-<% end %>
-
 <% form_for([@sprint,@task]) do |f| %>
 	<p>
   	<b>Product Backlog</b><br />

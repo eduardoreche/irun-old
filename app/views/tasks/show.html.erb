@@ -7,12 +7,12 @@
 
 <p>
   <b>Sprint:</b>
-  <%=h @task.sprint.comments %>
+  <%= textilize(@task.sprint.comments) %>
 </p>
 
 <p>
   <b>Ítem do Product Backlog:</b>
-  <%=h @task.backlog_item.description %>
+  <%= textilize(@task.backlog_item.description) %>
 </p>
 
 <p>

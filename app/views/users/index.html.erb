@@ -1,6 +1,6 @@
 <h1>Usuários</h1>
 
-<%= link_to 'New user', new_user_path %> 
+<%= link_to 'Novo usuário', new_user_path %> 
 <br/>
 
 <table align="center" style="width: 80%; background-color:#fff;border-space:0px;border:thin solid #000">
@@ -9,7 +9,7 @@
 		<tr>
 	<%- end -%>
 		<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
-			<%= render_user_image(user) %>
+			<%= link_to render_user_image(user), user %>
 			<br/>
 			<h3><%= user.name %></h3> <br/>
 			<%= auto_link(user.email) %> <br/>
