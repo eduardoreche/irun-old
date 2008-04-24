@@ -12,7 +12,7 @@
 	</p>
 	
   <p>
-    <b>Ítem de Product Backlog</b><br />
+    <b>Item de Product Backlog</b><br />
     <%= f.select :backlog_item_id, @backlog_items.collect{|b| ["#{b.product.name}: #{b.description}", b.id]}, :prompt => "-- Selecione --" %>
   </p>
 	

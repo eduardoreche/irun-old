@@ -10,8 +10,9 @@
 
 	div#item_backlog {
 		background-color: #3366CC;
-		border-right: 2px solid #9999CC;
-		border-bottom: 2px solid #9999CC;
+		border: 1px solid #000;
+		border-right: 2px solid #000;
+		border-bottom: 2px solid #000;
 		margin: 1px; 
 		width: 23%;
 		height: 167px;
@@ -62,8 +63,14 @@
 	<h2>Sprint</h2>
 	<%= textilize(@sprint.comments) %>
 	
+	<b>Filtro: </b>
+	&nbsp;&nbsp;<%= link_to "Todos", :action => "index" %>
+	<%- for product in @products do -%>
+	&nbsp;&nbsp;<%= link_to product.name, :action => "index", :filter => product.id %>
+	<%- end -%>
+	
 	<div id="item_backlog_title">
-		<b>Ítem</b>
+		<b>Item</b>
 	</div>
 	<div id="status_title">
 		<b>Aberto</b>
@@ -75,7 +82,7 @@
 		<b>Pronto</b>	
 	</div>
 
-	<% @sprint.tasks.group_by(&:backlog_item).each do |backlog_item,tasks| %>
+	<% @tasks.group_by(&:backlog_item).each do |backlog_item,tasks| %>
 	
 		<div id="item_group">	
 		
