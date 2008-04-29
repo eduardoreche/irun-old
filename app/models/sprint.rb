@@ -7,17 +7,15 @@ class Sprint < ActiveRecord::Base
   validates_associated :backlog
   
   def developers_hours
-    conn = ActiveRecord::Base.connection
-    
-    result = conn.select_one("select sum(hours) from developers where sprint_id = #{self.id}")
-    developers_hours = result['sum(hours)']
+    developers_hours = Developer.sum(:hours, :conditions => ["sprint_id = ?", self.id])
   end
   
   def tasks_hours
-    conn = ActiveRecord::Base.connection
-    
-    result = conn.select_one("select sum(hours) from tasks where sprint_id = #{self.id}")
-    tasks_hours = result['sum(hours)']
+    tasks_hours = Task.sum(:hours, :conditions => ["sprint_id = ?", self.id])
+  end
+  
+  def concluded_tasks
+    concluded_tasks = Task.sum(:hours, :conditions => ["sprint_id = ? and status = 'Pronto'", self.id])
   end
   
 end

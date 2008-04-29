@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
       image.write("#{filepath}")
     end
   end
+  
+  def horas_trabalhadas
+    work_hours = Task.sum(:hours, 
+                          :conditions => ["sprints.active is true and tasks.status = 'Pronto' 
+                                           and tasks.user_id = ?",self.id],
+                          :include => :sprint)
+  end
 end

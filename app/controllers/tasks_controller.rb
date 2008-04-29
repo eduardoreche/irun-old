@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = @sprint.tasks.build(params[:task])
-    @task.status = "Aberto"
+    @task.status = 'Aberto'
 
     respond_to do |format|
       if @task.save
@@ -70,14 +70,14 @@ class TasksController < ApplicationController
       if @task.update_attributes(params[:task])
         
         if status != @task.status
-          if @task.status == "Alocado"
+          if @task.status == 'Alocado'
             @task.user = session[:user]
             @task.init = Time.now
           end
-          if @task.status == "Pronto"
+          if @task.status == 'Pronto'
               @task.end = Time.now
           end
-          if @task.status == "Aberto"
+          if @task.status == 'Aberto'
               @task.end = nil
               @task.init = nil
               @task.user = nil

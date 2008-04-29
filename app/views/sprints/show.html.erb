@@ -21,7 +21,8 @@
 
 	<p>
 		<b>Total de horas dos desenvolvedores: </b> <%= @sprint.developers_hours %> <br/>
-		<b>Total de horas das tarefas: </b> <%= @sprint.tasks_hours %> 	
+		<b>Total de horas das tarefas: </b> <%= @sprint.tasks_hours %> 	<br/>
+		<%= "<b>Total de horas efetivadas: </b>#{@sprint.concluded_tasks}" unless @sprint.concluded_tasks.blank? %> <br/>
 	</p>
 
 	<p>
@@ -34,9 +35,10 @@
 		<b>Desenvolvedores:</b> <br/>
 		<%- for developer in @sprint.developers -%>
 			<div class="developers">
-				<%= render_user_image(developer.user) %> <br/>
+				<%= link_to render_user_image(developer.user), user_path(developer.user) %> <br/>
 				<%= developer.user.name %> <br/>
-				<%= developer.hours %> horas
+				<%= developer.hours %> horas <br/>
+				<%= "#{developer.user.horas_trabalhadas} efetivadas" if not developer.user.horas_trabalhadas.blank? %>
 			</div>
 		<%- end -%>
 	</p>

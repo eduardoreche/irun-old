@@ -31,7 +31,7 @@
 			  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
 				<% if @task.status == "Pronto" %>
 					<br/>
-			  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %>
+			  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %> 
 				<% end %>
 		<%- end -%>
 	
