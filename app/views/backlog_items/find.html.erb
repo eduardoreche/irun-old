@@ -1,0 +1,12 @@
+<%= javascript_include_tag "default" %>
+
+<% form_remote_tag (:url => search_backlog_backlog_items_path,
+										:html => {:id => 'psq_form'},
+										:method => 'get' ) do %>
+											
+  <p>	<%= text_field :find, :search %> <%= submit_tag 'Buscar' %> </p>
+<% end %>
+
+<div id="result">
+		<%= render :partial => 'search', :object => @backlog_items %>
+</div>

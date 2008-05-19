@@ -1,5 +1,7 @@
 class BacklogItemsController < ApplicationController
   
+  layout "layout_pesquisa.html.erb", :only => [:find]
+  
   before_filter :load_backlog
   before_filter :load_products, :only => [:new, :edit, :create, :update]
   
@@ -87,6 +89,25 @@ class BacklogItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(backlog_backlog_items_url(@backlog)) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def find
+    @backlog_items = []
+    #respond_to format.html
+  end
+  
+  def search
+    @backlog_items = []
+    if params[:find]
+      @backlog_items = @backlog.backlog_items.find(:all,
+                        :conditions => ["products.name LIKE ? OR backlog_items.description LIKE ?",
+                                           "%#{params['find'][:search]}%","%#{params['find'][:search]}%"],
+                        :include => [:product],
+                        :order => 'products.name')
+      respond_to do |format|
+        format.js { render }
+      end
     end
   end
   

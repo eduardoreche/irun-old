@@ -1,0 +1,2 @@
+#page.replace_html "result", :partial => 'pfind', :collection => @backlog_items
+#page.insert_html :bottom, :partial => 'find', :object => @backlog_items

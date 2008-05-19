@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   
-  before_filter :load_sprint
+  before_filter :load_sprint, :only => [:index, :new, :create, :edit, :update, :destroy, :show]
   before_filter :load_backlog_items, :only => [:new, :create, :edit, :update]
   
   # GET /tasks

@@ -1,10 +1,11 @@
 <style type="text/css" media="screen">
 	.developers {
 		float: left;
-		width: 48%;
-		background-color: #efe;
+		width: 40%;
+		min-height: 210px;
+		background-color: #efefef;
 		border: thin solid #000;
-		padding: 1px;
+		padding: 3px;
 		margin: 2px;
 		text-align: center;
 	}
@@ -36,9 +37,11 @@
 		<%- for developer in @sprint.developers -%>
 			<div class="developers">
 				<%= link_to render_user_image(developer.user), user_path(developer.user) %> <br/>
-				<%= developer.user.name %> <br/>
+				<b><%= developer.user.name.split[0] %></b> <br/>
 				<%= developer.hours %> horas <br/>
-				<%= "#{developer.user.horas_trabalhadas} efetivadas" if not developer.user.horas_trabalhadas.blank? %>
+				<% @alocadas = developer.user.tasks.find_all{|t| t.status == 'Alocado'}.size %>
+				<%= @alocadas %> <%= (@alocadas == 1 ? 'tarefa alocada' : 'tarefas alocadas')  %> <br/>
+				<%= "#{developer.user.horas_trabalhadas} horas efetivadas" if not developer.user.horas_trabalhadas.blank? %>
 			</div>
 		<%- end -%>
 	</p>

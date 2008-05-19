@@ -1,11 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :developers
+  
+  map.resources :tasks
 
-
-  map.resources :sprints, :has_many => [:tasks,:developers],
+  map.resources :sprints, 
+                :has_many => [:tasks,:developers],
                 :member => {:activate => :get}
 
-  map.resources :backlogs, :has_many => [:backlog_items]
+  map.resources :backlogs do |backlogs|
+    backlogs.resources :backlog_items, :collection => {:find => :get, :search => :get}
+  end
 
   map.resources :products
 
