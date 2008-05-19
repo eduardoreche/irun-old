@@ -1,7 +1,5 @@
 class BacklogItemsController < ApplicationController
   
-  layout "layout_pesquisa.html.erb", :only => [:find]
-  
   before_filter :load_backlog
   before_filter :load_products, :only => [:new, :edit, :create, :update]
   
@@ -94,7 +92,7 @@ class BacklogItemsController < ApplicationController
   
   def find
     @backlog_items = []
-    #respond_to format.html
+    render :layout => 'layout_pesquisa'
   end
   
   def search

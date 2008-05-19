@@ -7,8 +7,8 @@
 			<tr>
 				<td><%= item.product.name %></td>
 				<td>
-					<a href="#" onclick="preencheCampo('backlog_item_id','<%= "#{item.id}" %>');preencheCampo('backlog_item_description','<%= "#{item.product.name}: #{item.description}" %>');parent.tb_remove()">
-						<%= item.description %>
+					<a href="#" onclick='preencheCampo("backlog_item_description","<%= item.product.name %>: <%= item.description.gsub(/\r\n/,'').gsub(/\"/,'``') %>");preencheCampo("backlog_item_id","<%= "#{item.id}" %>");parent.tb_remove()'>
+						<%=h item.description %>
 					</a>
 				</td>
 				<td style="text-align:center"><%= item.points %></td>
