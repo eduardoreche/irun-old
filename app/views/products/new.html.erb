@@ -1,7 +1,10 @@
-<h1>Novo Produto</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Voltar', products_path %>
+	</div>
+	<h1>Novo Produto</h1>
+</div>
 
-<%= error_messages_for :product %>
-
-<%= render :partial => 'form' %>
-
-<%= link_to 'Voltar', products_path %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>

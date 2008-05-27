@@ -1,5 +1,10 @@
-<h1>Novo Desenvolvedor</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Voltar', sprint_developers_path(@sprint) %>
+	</div>
+	<h1>Novo Desenvolvedor</h1>
+</div>
 
-<%= render :partial => 'form' %>
-
-<%= link_to 'Voltar', sprint_developers_path(@sprint) %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>

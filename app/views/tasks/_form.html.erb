@@ -19,7 +19,7 @@
     <b>Item de Product Backlog</b><br />
 		<%= f.text_field :backlog_item_id, :size => 5, :id => 'backlog_item_id', :readonly => 'true' %>&nbsp;
 		<a href="<%= find_backlog_backlog_items_path(@sprint.backlog) %>?KeepThis=true&TB_iframe=true&height=400&width=500" class="thickbox"><%= image_tag 'magnifier.png', :border => 0 %></a>&nbsp;
-		<input type="text" id="backlog_item_description" size="50" readonly="true"/>  
+		<input type="text" id="backlog_item_description" size="50" readonly="true" value="<%= (@task.backlog_item ? @task.backlog_item.description : '') %>"/>  
 		<br />
   </p>
 	

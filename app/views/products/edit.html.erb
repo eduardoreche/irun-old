@@ -1,8 +1,12 @@
-<h1>Editando Produto</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', @product %> |
+		<%= link_to 'Voltar', products_path %>
+	</div>
+	<h1>Editando Produto</h1>
+</div>
 
-<%= error_messages_for :product %>
+<div id="data">
+	<%= render	:partial => 'form' %>
+</div>
 
-<%= render	:partial => 'form' %>
-
-<%= link_to 'Mostrar', @product %> |
-<%= link_to 'Voltar', products_path %>

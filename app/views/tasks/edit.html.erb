@@ -1,6 +1,13 @@
-<h1>Editando Tarefa</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', sprint_task_path(@sprint,@task) %> |
+		<%= link_to 'Voltar', sprint_tasks_path %>
+	</div>
+	
+	<h1>Editando Tarefa</h1>
+</div>
 
-<%= render :partial => 'form' %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>
 
-<%= link_to 'Mostrar', sprint_task_path(@sprint,@task) %> |
-<%= link_to 'Voltar', sprint_tasks_path %>

@@ -1,5 +1,11 @@
-<h1>Novo item de backlog</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Voltar', backlog_backlog_items_path(@backlog) %>
+	</div>
+	<h1>Novo item de backlog</h1>
+</div>
 
-<%= render :partial => 'form' %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>
 
-<%= link_to 'Voltar', backlog_backlog_items_path(@backlog) %>

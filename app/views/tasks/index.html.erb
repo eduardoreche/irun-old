@@ -1,39 +1,39 @@
-<h1>Tarefas</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Nova tarefa', new_sprint_task_path(@sprint) %> | 
+		<%= link_to 'Voltar para sprints', sprints_url %>
+	</div>
+	<h1>Tarefas</h1>
+</div>
 
-<%= textilize(@sprint.comments) %>
+<div id="data">
+	<%= textilize(@sprint.comments) %>
 
-<%= link_to 'Nova tarefa', new_sprint_task_path(@sprint) %>
- | 
-<%= link_to 'Voltar para sprints', sprints_url %>
+	<table id="grid">
+	  <tr>
+	    <th>Descrição</th>
+	    <th>Horas</th>
+	    <th>Item de ProductBacklog</th>
+	    <th>Status</th>
+	    <th>Usuário</th>
+	    <th>Início</th>
+	    <th>Fim</th>
+			<th id="action" colspan="3">Ações</th>
+	  </tr>
 
-<table id="grid">
-  <tr>
-    <th>Descrição</th>
-    <th>Horas</th>
-    <th>Item de ProductBacklog</th>
-    <th>Status</th>
-    <th>Usuário</th>
-    <th>Início</th>
-    <th>Fim</th>
-		<th id="action" colspan="3">Ações</th>
-  </tr>
-
-<% for task in @tasks %>
-  <tr>
-    <td><%=h task.description %></td>
-    <td id="action"><%=h task.hours %></td>
-    <td><%= textilize(task.backlog_item.description) %></td>
-    <td><%=h task.status %></td>
-    <td><%= (task.user ? task.user.name.split[0] : '') %></td>
-    <td><%= (task.init ? task.init.strftime("%d/%m %H:%M") : '') %></td>
-    <td><%= (task.end ? task.end.strftime("%d/%m %H:%M") : '') %></td>
-    <td id="action"><%= link_to 'Mostrar', sprint_task_path(@sprint,task) %></td>
-    <td id="action"><%= link_to 'Editar', edit_sprint_task_path(@sprint,task) %></td>
-    <td id="action"><%= link_to 'Apagar', sprint_task_path(@sprint,task), :confirm => 'Você tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to 'Nova tarefa', new_sprint_task_path(@sprint) %>
- | 
-<%= link_to 'Voltar para sprints', sprints_url %>
+	<% for task in @tasks %>
+	  <tr>
+	    <td><%=h task.description %></td>
+	    <td id="action"><%=h task.hours %></td>
+	    <td><%= textilize(task.backlog_item.description) %></td>
+	    <td><%=h task.status %></td>
+	    <td><%= (task.user ? task.user.name.split[0] : '') %></td>
+	    <td><%= (task.init ? task.init.strftime("%d/%m %H:%M") : '') %></td>
+	    <td><%= (task.end ? task.end.strftime("%d/%m %H:%M") : '') %></td>
+	    <td id="action"><%= link_to 'Mostrar', sprint_task_path(@sprint,task) %></td>
+	    <td id="action"><%= link_to 'Editar', edit_sprint_task_path(@sprint,task) %></td>
+	    <td id="action"><%= link_to 'Apagar', sprint_task_path(@sprint,task), :confirm => 'Você tem certeza?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

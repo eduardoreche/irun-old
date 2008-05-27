@@ -1,5 +1,10 @@
-<h1>Nova Tarefa</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Voltar', sprint_tasks_path %>
+	</div>
+	<h1>Nova Tarefa</h1>
+</div>
 
-<%= render :partial => 'form' %>
-
-<%= link_to 'Voltar', sprint_tasks_path %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>

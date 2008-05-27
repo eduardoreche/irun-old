@@ -1,18 +1,25 @@
-<p>
-  <b>Name:</b>
-  <%=h @product.name %>
-</p>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Editar', edit_product_path(@product) %> |
+		<%= link_to 'Voltar', products_path %>
+	</div>
+	<h1>Produto</h1>
+</div>
 
-<p>
-  <b>Comments:</b>
-  <%= textilize(@product.comments) %>
-</p>
+<div id="data">
+	<p>
+	  <b>Name:</b>
+	  <%=h @product.name %>
+	</p>
 
-<p>
-  <%= render_product_image(@product) %>
+	<p>
+	  <b>Comments:</b>
+	  <%= textilize(@product.comments) %>
+	</p>
+
+	<p>
+	  <%= render_product_image(@product) %>
   
-</p>
+	</p>
+</div>
 
-
-<%= link_to 'Editar', edit_product_path(@product) %> |
-<%= link_to 'Voltar', products_path %>

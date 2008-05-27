@@ -1,6 +1,12 @@
-<h1>Editando desenvolvedor</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', sprint_developer_path(@sprint,@developer) %> |
+		<%= link_to 'Voltar', sprint_developers_path(@sprint) %>
+	</div>
+	<h1>Editando desenvolvedor</h1>
+</div>
 
-<%= render :partial => 'form' %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>
 
-<%= link_to 'Mostrar', sprint_developer_path(@sprint,@developer) %> |
-<%= link_to 'Voltar', sprint_developers_path(@sprint) %>

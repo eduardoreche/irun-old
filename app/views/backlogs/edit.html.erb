@@ -1,8 +1,11 @@
-<h1>Editando Product Backlog</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', @backlog %> |
+		<%= link_to 'Voltar', backlogs_path %>
+	</div>
+	<h1>Editando Product Backlog</h1>
+</div>
 
-<%= error_messages_for :backlog %>
-
-<%= render :partial => 'form' %>
-
-<%= link_to 'Mostrar', @backlog %> |
-<%= link_to 'Voltar', backlogs_path %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>

@@ -1,35 +1,42 @@
-<%- if !@user.image -%>
-	<%= link_to "<img src='/images/users/nobody.jpg' id='user_photo'/>", @user %>			
-<%- else -%>
-	<%= link_to "<img src='/images/users/#{@user.image}' id='user_photo'/>", @user %>
-<%- end -%>
-
-<p>
-  <b><%= @user.name %></b><br/>
-	<%= auto_link(@user.email) %>
-	<div id="comments">
-  	<%= textilize(@user.comment) %>
-	</div>
-</p>
-
-<% @tasks.group_by(&:status).each do |status,tasks| %>
-
-	<div id="status" style="width:50%;border:thin solid #ccc;margin: 3px;padding:10px">
-		<h2>Trabalho <%= status %></h2>
-		<ul>
-		<% for task in tasks %>
-			<li>
-					<%= link_to "[#{task.backlog_item.product.name}] #{task.description}", sprint_task_path(task.sprint,task) %> <br/>
-					<%= "Iniciado em <b>#{task.init.strftime('%d/%b %H:%M:%S')}</b>"%>
-					<%= "<br/>Concluído em <b>#{task.end.strftime('%d/%b %H:%M:%S')}</b>" if task.end %> <br/>
-					<%= "Previsão inicial de <b>#{task.hours}</b> horas"%>
-			</li>
-		<% end %>	
-		</ul>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Editar', edit_user_path(@user) %> |
+		<%= link_to 'Voltar', users_path %>
 	</div>
 	
-<% end %>
+	<h1>Usuário</h1>
+</div>
 
+<div id="data">
+	<%- if !@user.image -%>
+		<%= link_to "<img src='/images/users/nobody.jpg' id='user_photo'/>", @user %>			
+	<%- else -%>
+		<%= link_to "<img src='/images/users/#{@user.image}' id='user_photo'/>", @user %>
+	<%- end -%>
 
-<%= link_to 'Editar', edit_user_path(@user) %> |
-<%= link_to 'Voltar', users_path %>
+	<p>
+	  <b><%= @user.name %></b><br/>
+		<%= auto_link(@user.email) %>
+		<div id="comments">
+	  	<%= textilize(@user.comment) %>
+		</div>
+	</p>
+
+	<% @tasks.group_by(&:status).each do |status,tasks| %>
+
+		<div id="status" style="width:50%;border:thin solid #ccc;margin: 3px;padding:10px">
+			<h2>Trabalho <%= status %></h2>
+			<ul>
+			<% for task in tasks %>
+				<li>
+						<%= link_to "[#{task.backlog_item.product.name}] #{task.description}", sprint_task_path(task.sprint,task) %> <br/>
+						<%= "Iniciado em <b>#{task.init.strftime('%d/%b %H:%M:%S')}</b>"%>
+						<%= "<br/>Concluído em <b>#{task.end.strftime('%d/%b %H:%M:%S')}</b>" if task.end %> <br/>
+						<%= "Previsão inicial de <b>#{task.hours}</b> horas"%>
+				</li>
+			<% end %>	
+			</ul>
+		</div>
+	
+	<% end %>
+</div>

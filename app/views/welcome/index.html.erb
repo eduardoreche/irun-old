@@ -60,7 +60,12 @@
 </style>
 
 <% if @sprint %>
-	<h2>Sprint</h2>
+	<div class="page_header">
+		<h1>Sprint</h1>
+	</div>
+	
+<div id="data">
+	
 	<%= textilize(@sprint.comments) %>
 	
 	<b>Filtro: </b>
@@ -124,3 +129,5 @@
 <% else %>
 	Bem-vindo ao <b>iRun</b>
 <% end %>
+
+</div>

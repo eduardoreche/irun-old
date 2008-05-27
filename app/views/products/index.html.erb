@@ -1,25 +1,28 @@
-<h1>Produtos</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Novo Produto', new_product_path %>
+	</div>
+	<h1>Produtos</h1>
+</div>
 
-<table id="grid">
-  <tr>
-    <th>Nome</th>
-    <th>Comentários</th>
-    <th id="action">Imagem</th>
-		<th id="action" colspan="3">Ações</th>
-  </tr>
+<div id="data">
+	<table id="grid">
+	  <tr>
+	    <th>Nome</th>
+	    <th>Comentários</th>
+	    <th id="action">Imagem</th>
+			<th id="action" colspan="3">Ações</th>
+	  </tr>
 
-<% for product in @products %>
-  <tr>
-    <td><%=h product.name %></td>
-    <td><%= textilize(product.comments) %></td>
-    <td id="action"><%= render_product_image(product) %></td>
-    <td id="action"><%= link_to 'Mostrar', product %></td>
-    <td id="action"><%= link_to 'Editar', edit_product_path(product) %></td>
-    <td id="action"><%= link_to 'Apagar', product, :confirm => 'Você tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Novo Produto', new_product_path %>
+	<% for product in @products %>
+	  <tr>
+	    <td><%=h product.name %></td>
+	    <td><%= textilize(product.comments) %></td>
+	    <td id="action"><%= render_product_image(product) %></td>
+	    <td id="action"><%= link_to 'Mostrar', product %></td>
+	    <td id="action"><%= link_to 'Editar', edit_product_path(product) %></td>
+	    <td id="action"><%= link_to 'Apagar', product, :confirm => 'Você tem certeza?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

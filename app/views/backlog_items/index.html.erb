@@ -1,33 +1,37 @@
-<h1>Itens de Product Backlog</h1>
+<div class="page_header">
+	<div class="page_header_links">
+			<%= link_to 'Novo Item Backlog', new_backlog_backlog_item_path(@backlog) %> | 
+			<%= link_to 'Voltar para Product Backlog', backlogs_path %>
+		</div>
+	<h1>Itens de Product Backlog</h1>
+</div>
 
-<h2><%= @backlog.name %></h2>
+<div id="data">
+	<h2><%= @backlog.name %></h2>
  
-<table id="grid">
-  <tr>
-    <th>Descrição</th>
-    <th>Produto</th>
-    <th id="action">Iteração</th>
-    <th id="action">Pontos</th>
-    <th id="action">Responsável</th>
-		<th id="action" colspan="3">Ações</th>
-  </tr>
+	<table id="grid">
+	  <tr>
+	    <th>Descrição</th>
+	    <th>Produto</th>
+	    <th id="action">Iteração</th>
+	    <th id="action">Pontos</th>
+	    <th id="action">Responsável</th>
+			<th id="action" colspan="3">Ações</th>
+	  </tr>
 
-<% for backlog_item in @backlog_items %>
-  <tr>
-    <td><%= textilize(backlog_item.description) %></td>
-    <td><%=h backlog_item.product.name %></td>
-    <td id="action"><%=h backlog_item.iteration %></td>
-    <td id="action"><%=h backlog_item.points %></td>
-    <td id="action"><%= backlog_item.user.name.split[0] %></td>
-    <td id="action"><%= link_to 'Mostrar', backlog_backlog_item_path(@backlog,backlog_item) %></td>
-    <td id="action"><%= link_to 'Editar', edit_backlog_backlog_item_path(@backlog,backlog_item) %></td>
-    <td id="action"><%= link_to 'Apagar', backlog_backlog_item_path(@backlog,backlog_item), :confirm => 'Você tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<% for backlog_item in @backlog_items %>
+	  <tr>
+	    <td><%= textilize(backlog_item.description) %></td>
+	    <td><%=h backlog_item.product.name %></td>
+	    <td id="action"><%=h backlog_item.iteration %></td>
+	    <td id="action"><%=h backlog_item.points %></td>
+	    <td id="action"><%= backlog_item.user.name.split[0] %></td>
+	    <td id="action"><%= link_to 'Mostrar', backlog_backlog_item_path(@backlog,backlog_item) %></td>
+	    <td id="action"><%= link_to 'Editar', edit_backlog_backlog_item_path(@backlog,backlog_item) %></td>
+	    <td id="action"><%= link_to 'Apagar', backlog_backlog_item_path(@backlog,backlog_item), :confirm => 'Você tem certeza?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
 
-<br />
 
-<%= link_to 'Novo item de Product Backlog', new_backlog_backlog_item_path(@backlog) %>
- | 
-<%= link_to 'Voltar para Product Backlog', backlogs_path %>
+</div>

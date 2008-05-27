@@ -1,6 +1,11 @@
-<h1>Editando item de backlog</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', backlog_backlog_item_path(@backlog,@backlog_item) %> |
+		<%= link_to 'Voltar', backlog_backlog_items_path(@backlog) %>
+	</div>
+	<h1>Editando Item de Backlog</h1>
+</div>
 
-<%= render :partial => 'form', :locals => {:bt_name => "Save"} %>
-
-<%= link_to 'Mostrar', backlog_backlog_item_path(@backlog,@backlog_item) %> |
-<%= link_to 'Voltar', backlog_backlog_items_path(@backlog) %>
+<div id="data">
+	<%= render :partial => 'form', :locals => {:bt_name => "Save"} %>
+</div>

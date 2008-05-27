@@ -1,6 +1,12 @@
-<h1>Editing user</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Mostrar', @user %> |
+		<%= link_to 'Voltar', users_path %>
+	</div>
+	
+	<h1>Editando usuário</h1>
+</div>
 
-<%= render :partial => 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div id="data">
+	<%= render :partial => 'form' %>
+</div>

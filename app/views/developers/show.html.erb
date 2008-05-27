@@ -1,17 +1,22 @@
-<p>
-  <%= textilize(@sprint.comments) %>
-</p>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Voltar', sprint_developers_path(@sprint) %>
+	</div>
+	<h1>Desenvolvedor</h1>
+</div>
 
-<p>
-  <%= render_user_image(@developer.user) %><br/>
-  <%=h @developer.user.name %>
-</p>
+<div id="data">
+	<p>
+	 <%= textilize(@sprint.comments) %>
+	</p>
 
-<p>
-  <b>Total de Horas:</b>
-  <%=h @developer.hours %>
-</p>
+	<p>
+	 <%= render_user_image(@developer.user) %><br/>
+	 <%=h @developer.user.name %>
+	</p>
 
-
-<%= link_to 'Edit', edit_sprint_developer_path(@sprint,@developer) %> |
-<%= link_to 'Back', sprint_developers_path(@sprint) %>
+	<p>
+	 <b>Total de Horas:</b>
+	 <%=h @developer.hours %>
+	</p>
+</div>

@@ -1,24 +1,27 @@
-<h1>Product Backlogs</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Novo Product Backlog', new_backlog_path %>
+	</div>
+	<h1>Product Backlogs</h1>
+</div>
 
-<table id="grid">
-  <tr>
-    <th>Nome</th>
-    <th>Comentários</th>
-		<th id="action" colspan="4">Ações</th>
-  </tr>
+<div id="data">
+	<table id="grid">
+	  <tr>
+	    <th>Nome</th>
+	    <th>Comentários</th>
+			<th id="action" colspan="4">Ações</th>
+	  </tr>
 
-<% for backlog in @backlogs %>
-  <tr>
-    <td><%=h backlog.name %></td>
-    <td><%= textilize(backlog.comment) %></td>
-		<td id="action"><%= link_to 'Itens', backlog_backlog_items_path(backlog) %>
-    <td id="action"><%= link_to 'Mostrar', backlog %></td>
-    <td id="action"><%= link_to 'Editar', edit_backlog_path(backlog) %></td>
-    <td id="action"><%= link_to 'Apagar', backlog, :confirm => 'Você tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Novo Product Backlog', new_backlog_path %>
+	<% for backlog in @backlogs %>
+	  <tr>
+	    <td><%=h backlog.name %></td>
+	    <td><%= textilize(backlog.comment) %></td>
+			<td id="action"><%= link_to 'Itens', backlog_backlog_items_path(backlog) %>
+	    <td id="action"><%= link_to 'Mostrar', backlog %></td>
+	    <td id="action"><%= link_to 'Editar', edit_backlog_path(backlog) %></td>
+	    <td id="action"><%= link_to 'Apagar', backlog, :confirm => 'Você tem certeza?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

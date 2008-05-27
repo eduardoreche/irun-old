@@ -1,29 +1,33 @@
-<h1>Usuários</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Novo usuário', new_user_path %> 
+	</div>
+	<h1>Usuários</h1>
+</div>
 
-<%= link_to 'Novo usuário', new_user_path %> 
-<br/>
-
-<table align="center" style="width: 80%; background-color:#fff;border-space:0px;border:thin solid #000">
-<%- for user in @users -%>
-	<%- if (@users.index(user) == 0) || ((@users.index(user)+1)%2 != 0) -%> 
-		<tr>
+<div id="data">
+	<table align="center" style="width: 80%; background-color:#fff;border-space:0px;border:thin solid #000">
+	<%- for user in @users -%>
+		<%- if (@users.index(user) == 0) || ((@users.index(user)+1)%2 != 0) -%> 
+			<tr>
+		<%- end -%>
+			<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
+				<%= link_to render_user_image(user), user %>
+				<br/>
+				<h3><%= user.name %></h3> <br/>
+				<%= auto_link(user.email) %> <br/>
+				<%= textilize(user.comment) %> <br/>
+				<%= link_to 'Editar', edit_user_path(user) %> or 
+				<%= link_to 'Apagar', user, :confirm => 'Are you sure?', :method => :delete %>
+			</td>
+		<%- if @users.index(user)%2 > 0 -%> 
+			</tr>
+		<%- end -%>
 	<%- end -%>
-		<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
-			<%= link_to render_user_image(user), user %>
-			<br/>
-			<h3><%= user.name %></h3> <br/>
-			<%= auto_link(user.email) %> <br/>
-			<%= textilize(user.comment) %> <br/>
-			<%= link_to 'Editar', edit_user_path(user) %> or 
-			<%= link_to 'Apagar', user, :confirm => 'Are you sure?', :method => :delete %>
-		</td>
-	<%- if @users.index(user)%2 > 0 -%> 
+
+	<% if @users.size % 2 > 0 %>
+			<td>&nbsp;</td>
 		</tr>
-	<%- end -%>
-<%- end -%>
-
-<% if @users.size % 2 > 0 %>
-		<td>&nbsp;</td>
-	</tr>
-<% end %>
-</table>
+	<% end %>
+	</table>
+</div>

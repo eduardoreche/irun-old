@@ -18,4 +18,18 @@ class Sprint < ActiveRecord::Base
     concluded_tasks = Task.sum(:hours, :conditions => ["sprint_id = ? and status = 'Pronto'", self.id])
   end
   
+  def developers_percent_hours
+    developer_hours = Task.sum(:hours, 
+                          :conditions => ["sprints.id = ? and tasks.status = 'Pronto'",self.id],
+                          :include => [:sprint,:user],
+                          :group => 'users.name',
+                          :order => 'sum_hours desc')
+    
+    
+    developer_hours.each do |dev|
+      dev[0] = dev[0].split(' ')[0]
+      dev[1] = dev[1]*100/concluded_tasks
+    end
+  end
+    
 end

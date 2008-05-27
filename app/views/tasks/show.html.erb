@@ -1,47 +1,52 @@
- <h2> <%= @task.description %> </h2>
-
-<p>
-  <b>Previsão de horas:</b>
-  <%=h @task.hours %>
-</p>
-
-<p>
-  <b>Sprint:</b>
-  <%= textilize(@task.sprint.comments) %>
-</p>
-
-<p>
-  <b>Item do Product Backlog:</b>
-  <%= textilize(@task.backlog_item.description) %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%=h @task.status %>
-</p>
-
-<% if @task.status != "Aberto" %>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Editar', edit_sprint_task_path(@sprint,@task) %> |
+		<%= link_to 'Voltar', sprint_tasks_path(@sprint) %>
+	</div>
 	
-		<%- unless @task.user == nil -%>
-			<%= render_user_image(@task.user) %>
-			<br/>
+	<h1> <%= @task.description %> </h1>
+</div>
+
+<div id="data">
+	<p>
+	  <b>Previsão de horas:</b>
+	  <%=h @task.hours %>
+	</p>
+
+	<p>
+	  <b>Sprint:</b>
+	  <%= textilize(@task.sprint.comments) %>
+	</p>
+
+	<p>
+	  <b>Item do Product Backlog:</b>
+	  <%= textilize(@task.backlog_item.description) %>
+	</p>
+
+	<p>
+	  <b>Status:</b>
+	  <%=h @task.status %>
+	</p>
+
+	<% if @task.status != "Aberto" %>
 	
-			<%= link_to @task.user.name, user_path(@task.user) %> <br/>
-
-			  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
-				<% if @task.status == "Pronto" %>
-					<br/>
-			  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %> 
-				<% end %>
-		<%- end -%>
+			<%- unless @task.user == nil -%>
+				<%= render_user_image(@task.user) %>
+				<br/>
 	
-<% end %>
+				<%= link_to @task.user.name, user_path(@task.user) %> <br/>
 
-<p>
-	<b>Story case</b><br/>
-	<%= textilize(@task.story) %>
-</p>
+				  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
+					<% if @task.status == "Pronto" %>
+						<br/>
+				  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %> 
+					<% end %>
+			<%- end -%>
+	
+	<% end %>
 
-<br/><br/>
-<%= link_to 'Editar', edit_sprint_task_path(@sprint,@task) %> |
-<%= link_to 'Voltar', sprint_tasks_path(@sprint) %>
+	<p>
+		<b>Story case</b><br/>
+		<%= textilize(@task.story) %>
+	</p>
+</div>

@@ -11,38 +11,44 @@
 	}
 </style>
 
-<div style="float:left; width: 58%; padding: 5px;">
-	<p>
-	  <%= textilize(@sprint.comments) %>
-	</p>
-
-	<p>
-	  <%= textilize(@sprint.backlog.comment) %>
-	</p>
-
-	<p>
-		<b>Total de horas dos desenvolvedores: </b> <%= @sprint.developers_hours %> <br/>
-		<b>Total de horas das tarefas: </b> <%= @sprint.tasks_hours %> 	<br/>
-		<%= "<b>Total de horas efetivadas: </b>#{@sprint.concluded_tasks}" unless @sprint.concluded_tasks.blank? %> <br/>
-	</p>
-
-	<p>
+<div class="page_header">
+	<div class="page_header_links">
 		<%= link_to 'Editar', edit_sprint_path(@sprint) %> |
 		<%= link_to 'Voltar', sprints_path %>
-	</p>
+	</div>
+	
+	<%= textilize(@sprint.comments) %>
 </div>
-<div style="float:left; width: 40%">
-	<p>
-		<b>Desenvolvedores:</b> <br/>
-		<%- for developer in @sprint.developers -%>
-			<div class="developers">
-				<%= link_to render_user_image(developer.user), user_path(developer.user) %> <br/>
-				<b><%= developer.user.name.split[0] %></b> <br/>
-				<%= developer.hours %> horas <br/>
-				<% @alocadas = developer.user.tasks.find_all{|t| t.status == 'Alocado'}.size %>
-				<%= @alocadas %> <%= (@alocadas == 1 ? 'tarefa alocada' : 'tarefas alocadas')  %> <br/>
-				<%= "#{developer.user.horas_trabalhadas} horas efetivadas" if not developer.user.horas_trabalhadas.blank? %>
-			</div>
-		<%- end -%>
-	</p>
+
+<div id="data">
+	<div style="float:left; width: 58%; padding: 5px;">
+		<p>
+		  <%= textilize(@sprint.backlog.comment) %>
+		</p>
+
+		<p>
+			<b>Total de horas dos desenvolvedores: </b> <%= @sprint.developers_hours %> <br/>
+			<b>Total de horas das tarefas: </b> <%= @sprint.tasks_hours %> 	<br/>
+			<%= "<b>Total de horas efetivadas: </b>#{@sprint.concluded_tasks}" unless @sprint.concluded_tasks.blank? %> <br/>
+		</p>
+
+		<%= bar_graph @sprint.developers_percent_hours %>
+	
+	</div>
+	<div style="float:left; width: 40%">
+		<p>
+			<b>Desenvolvedores:</b> <br/>
+			<%- for developer in @sprint.developers -%>
+				<div class="developers">
+					<%= link_to render_user_image(developer.user), user_path(developer.user) %> <br/>
+					<b><%= developer.user.name.split[0] %></b> <br/>
+					<%= developer.hours %> horas <br/>
+					<% @alocadas = developer.user.tasks.find_all{|t| t.status == 'Alocado'}.size %>
+					<%= @alocadas %> <%= (@alocadas == 1 ? 'tarefa alocada' : 'tarefas alocadas')  %> <br/>
+					<%= "#{developer.user.horas_trabalhadas} horas efetivadas" if not developer.user.horas_trabalhadas.blank? %>
+				</div>
+			<%- end -%>
+		</p>
+	
+	</div>
 </div>

@@ -1,27 +1,31 @@
-<h1>Sprints</h1>
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Novo Sprint', new_sprint_path %>
+	</div>
 
-<table id="grid">
-  <tr>
-    <th>Commentário</th>
-    <th>Product Backlog</th>
-		<th id="action">Ativo</th>
-		<th colspan="5" id="action">Ações</th>
-  </tr>
+	<h1>Sprints</h1>
+</div>
 
-<% for sprint in @sprints %>
-  <tr>
-    <td><%= textilize(sprint.comments) %></td>
-    <td><%=h sprint.backlog.name %></td>
-		<td id="action"><%= link_to (sprint.active ? 'Sim': 'Não'), activate_sprint_path(sprint) %></td>
-		<td id="action"><%= link_to 'Tarefas', sprint_tasks_path(sprint) %>
-		<td id="action"><%= link_to 'Desenvolvedores', sprint_developers_path(sprint) %>
-    <td id="action"><%= link_to 'Mostrar', sprint %></td>
-    <td id="action"><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
-    <td id="action"><%= link_to 'Apagar', sprint, :confirm => 'Você tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div id="data">
+	<table id="grid">
+	  <tr>
+	    <th>Commentário</th>
+	    <th>Product Backlog</th>
+			<th id="action">Ativo</th>
+			<th colspan="5" id="action">Ações</th>
+	  </tr>
 
-<br />
-
-<%= link_to 'Novo Sprint', new_sprint_path %>
+	<% for sprint in @sprints %>
+	  <tr>
+	    <td><%= textilize(sprint.comments) %></td>
+	    <td><%=h sprint.backlog.name %></td>
+			<td id="action"><%= link_to (sprint.active ? 'Sim': 'Não'), activate_sprint_path(sprint) %></td>
+			<td id="action"><%= link_to 'Tarefas', sprint_tasks_path(sprint) %>
+			<td id="action"><%= link_to 'Desenvolvedores', sprint_developers_path(sprint) %>
+	    <td id="action"><%= link_to 'Mostrar', sprint %></td>
+	    <td id="action"><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
+	    <td id="action"><%= link_to 'Apagar', sprint, :confirm => 'Você tem certeza?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>
