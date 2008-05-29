@@ -6,28 +6,35 @@
 </div>
 
 <div id="data">
-	<table align="center" style="width: 80%; background-color:#fff;border-space:0px;border:thin solid #000">
-	<%- for user in @users -%>
-		<%- if (@users.index(user) == 0) || ((@users.index(user)+1)%2 != 0) -%> 
-			<tr>
-		<%- end -%>
-			<td align="center" width="50%" style="background-color:#fff;border:thin solid #000">
-				<%= link_to render_user_image(user), user %>
-				<br/>
-				<h3><%= user.name %></h3> <br/>
-				<%= auto_link(user.email) %> <br/>
-				<%= textilize(user.comment) %> <br/>
-				<%= link_to 'Editar', edit_user_path(user) %> or 
-				<%= link_to 'Apagar', user, :confirm => 'Are you sure?', :method => :delete %>
-			</td>
-		<%- if @users.index(user)%2 > 0 -%> 
-			</tr>
-		<%- end -%>
+	
+	<style type="text/css" media="screen">
+		.card {
+			background-color: #FFFCCE;
+			border-right: 3px solid #ccc;
+			border-bottom: 3px solid #ccc;
+			float:left;
+			width: 400px;
+			height: 130px;
+			padding: 5px;
+			margin: 8px;
+		}
+		
+		.card img {
+			float:left;
+			margin: 5px;
+		}
+	</style>
+	
+	<%- for user in @users %>
+		<div class="card">
+			<%= link_to render_user_image(user), user %>
+			<b><%= user.name %></b><br/>
+			<%= auto_link(user.email) %> <br/>
+			<%= link_to 'Editar', edit_user_path(user) %> ou 
+			<%= link_to 'Apagar', user, :confirm => 'Você tem certeza?', :method => :delete %>
+		</div>
 	<%- end -%>
 
-	<% if @users.size % 2 > 0 %>
-			<td>&nbsp;</td>
-		</tr>
-	<% end %>
-	</table>
+<br/><br/><br/>
+
 </div>

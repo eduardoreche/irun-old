@@ -7,10 +7,10 @@ module ApplicationHelper
   
   def render_user_image(user)
     unless user == nil
-      if user.image
-        image_tag "/images/users/#{user.image}", :id => "user_photo"
-      else
+      if user.image.blank?
         image_tag "/images/users/nobody.jpg", :id => "user_photo"
+      else
+        image_tag "/images/users/#{user.image}", :id => "user_photo"
       end
     end
   end

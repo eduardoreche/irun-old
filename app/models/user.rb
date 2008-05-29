@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     if value.size > 0
       t = Time.new
       
-      self.image = "#{t.to_i}_#{File.basename(value.original_filename)}"
+      self.image = "#{t.to_i}_#{self.id}.jpg"
       filepath = "#{RAILS_ROOT}/public/images/users/#{self.image}"
       File.open(filepath, "wb") do |f|
         f.write(value.read)
@@ -37,10 +37,4 @@ class User < ActiveRecord::Base
     end
   end
   
-  def horas_trabalhadas
-    work_hours = Task.sum(:hours, 
-                          :conditions => ["sprints.active is true and tasks.status = 'Pronto' 
-                                           and tasks.user_id = ?",self.id],
-                          :include => :sprint)
-  end
 end

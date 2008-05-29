@@ -1,5 +1,6 @@
 body {
-	background-color: #efefef;
+	font-family: "Lucida Grande", arial, sans-serif;;
+	background-color: #E5E5E5;
 	margin: 0;
 	padding: 0 auto;
 }
@@ -82,27 +83,28 @@ h1 {
 
 
 div#top {
-	background-color: #ffffff;
+	background-color: #065573;
 	padding: 10px 10px 10px 10px;
 	margin: 0;
+	border-bottom: thick solid #014864;
 }
 
 ul#menu {
 	text-align: left;
 	margin: 1em 0 1em 0;
 	list-style-type: none;
-	padding: 3px 10px 3px 10px;
+	padding: 3px 20px 3px 10px;
 }
 
 ul#menu a {
 	font-weight: bold;
 	text-decoration: none;
-	color: #330000;
+	color: #fff;
 }
 
 ul#menu a:hover, a:active {
 	color: #FFFFFF;
-	background-color: #330000;
+	background-color: #0AA0DA;
 }
 
 ul#menu li{
@@ -118,10 +120,10 @@ div#main {
 	min-width: 900px;
 	width: 75%;
 	float: left;
-	border-left: 1px solid #ccc;
-	border-top: 1px solid #ccc;
-	border-right: thick solid #ccc;
-	border-bottom: thick solid #ccc; 
+	border-left: 0px solid #C9C9C9;
+	border-top: 0px solid #C9C9C9;
+	border-right: thick solid #C9C9C9;
+	border-bottom: thick solid #C9C9C9; 
 }
 
 div#data {
@@ -129,14 +131,12 @@ div#data {
 }
 
 .Footer {
-	width: 700px;
-	border: 1px solid #000;
+	width: 100%;
 	clear: left;
 	font-size: 9px;
 	color: #666;
 	margin: 4px 0 20px 20px;
 	text-align: left;
-	padding-bottom: 15px;
 }
 
 .Footer a:link, .Footer a:visited {
@@ -191,10 +191,12 @@ table#grid td#action {
 img#user_photo {
 	background-color: #fff;
 	padding: 3px 3px 20px 3px;
-	border: #000 1px solid;
+	border-right: 3px solid #ccc;
+	border-bottom: 3px solid #ccc;
 }
 
 div#postit {
+	font-family: Arial, "MS Trebuchet", sans-serif;
 	word-wrap:break-word;
 	border-right: 1px solid #9999CC;
 	border-bottom: 1px solid #9999CC;

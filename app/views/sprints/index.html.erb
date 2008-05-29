@@ -9,8 +9,9 @@
 <div id="data">
 	<table id="grid">
 	  <tr>
-	    <th>Commentário</th>
+	    <th>Comentário</th>
 	    <th>Product Backlog</th>
+			<th id="action">% Conclusão</th>
 			<th id="action">Ativo</th>
 			<th colspan="5" id="action">Ações</th>
 	  </tr>
@@ -19,6 +20,7 @@
 	  <tr>
 	    <td><%= textilize(sprint.comments) %></td>
 	    <td><%=h sprint.backlog.name %></td>
+			<td id="action"><%= concluded_label(sprint.complete) %></td>
 			<td id="action"><%= link_to (sprint.active ? 'Sim': 'Não'), activate_sprint_path(sprint) %></td>
 			<td id="action"><%= link_to 'Tarefas', sprint_tasks_path(sprint) %>
 			<td id="action"><%= link_to 'Desenvolvedores', sprint_developers_path(sprint) %>
