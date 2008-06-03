@@ -1,0 +1,8 @@
+<%= error_messages_for :comment %>
+
+<% form_for([@sprint,@task,@comment]) do |f| %>
+		<div align="left"><b>Comentário</b></div>
+    <%= f.text_area :comment, :cols => 80, :rows => 6 %>
+		<br/>
+    <%= f.submit "Enviar" %>
+<% end %>

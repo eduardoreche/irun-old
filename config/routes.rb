@@ -1,11 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :developers
-  
-  map.resources :tasks
 
-  map.resources :sprints, 
+  map.resources :sprints,  
                 :has_many => [:tasks,:developers],
                 :member => {:activate => :get}
+                
+  map.resources :sprints do |sprints|
+    sprints.resources :tasks do |tasks|
+      tasks.resources :comments
+    end
+    sprints.resources :developers
+    sprints.resources :member => {:activate => :get}
+  end
 
   map.resources :backlogs do |backlogs|
     backlogs.resources :backlog_items, :collection => {:find => :get, :search => :get}
@@ -48,6 +53,6 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+#  map.connect ':controller/:action/:id'
+#  map.connect ':controller/:action/:id.:format'
 end

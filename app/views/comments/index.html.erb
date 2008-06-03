@@ -1,0 +1,23 @@
+<div class="page_header">
+	<div class="page_header_links">
+		<%= link_to 'Novo comentário', new_sprint_task_comment_path(@sprint,@task) %>	</div>
+	<h1>Comentários</h1>
+</div>
+
+<div id="data">
+	<h2><%= @task.description %></h2>
+
+	<table>
+	  <tr>
+	    <th>Usuário</th>
+	    <th>Comentário</th>
+	  </tr>
+
+	<% for comment in @comments %>
+	  <tr>
+	    <td><%=h comment.user.name.split(' ')[0] %></td>
+	    <td><%=h comment.comment %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

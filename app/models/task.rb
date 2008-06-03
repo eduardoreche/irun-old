@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :sprint
   belongs_to :backlog_item
   belongs_to :user
+  has_many :comments
   
 
 #  def spended_time

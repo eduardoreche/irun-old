@@ -1,3 +1,65 @@
+<style type="text/css" media="screen">
+	div.task_data {
+		padding: 5px;
+	}
+	
+	div.comments {
+		float:left;
+		width: 80%;
+		margin: 3px;
+		border: 1px solid #efefef;
+		padding: 5px;
+	}
+	
+	div#comment {
+		margin: 2px;
+		padding: 3px 20px 3px 10px;
+	}
+	
+	div#comment_data {
+		width: 100%;
+		padding: 3px;
+	}
+	
+	div#comment_data.even {
+		background-color: #4F578B;
+		color: #fff;
+	}
+	
+	div#comment_data.odd {
+		background-color: #ccc;
+		color: #000;
+	}
+	
+	div#comment_body {
+		width: 100%;
+		padding: 3px;
+	}
+	
+	div#comment_body p {
+		margin: 0px 3px 3px 3px;
+	}
+	
+	div#comment_body.even {
+		background-color: #edf3fe;
+	}
+	
+	div#comment_body.odd {
+		background-color: #efefef;
+	}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+	function showCommentsForm(){
+		document.getElementById('comments_form').style.display = 'block';
+		document.getElementById('comments_show_link').style.display = 'none';
+	}
+	function hiddenCommentsForm(){
+		document.getElementById('comments_form').style.display = 'none';
+		document.getElementById('comments_show_link').style.display = 'block';
+	}
+</script>
+
 <div class="page_header">
 	<div class="page_header_links">
 		<%= link_to 'Editar', edit_sprint_task_path(@sprint,@task) %> |
@@ -8,45 +70,85 @@
 </div>
 
 <div id="data">
-	<p>
-	  <b>Previsão de horas:</b>
-	  <%=h @task.hours %>
-	</p>
-
-	<p>
-	  <b>Sprint:</b>
-	  <%= textilize(@task.sprint.comments) %>
-	</p>
-
-	<p>
-	  <b>Item do Product Backlog:</b>
-	  <%= textilize(@task.backlog_item.description) %>
-	</p>
-
-	<p>
-	  <b>Status:</b>
-	  <%=h @task.status %>
-	</p>
-
-	<% if @task.status != "Aberto" %>
 	
-			<%- unless @task.user == nil -%>
-				<%= render_user_image(@task.user) %>
-				<br/>
-	
-				<%= link_to @task.user.name, user_path(@task.user) %> <br/>
+	<div class="task_data">	
+		<p>
+		  <b>Previsão de horas:</b>
+		  <%=h @task.hours %>
+		</p>
 
-				  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
-					<% if @task.status == "Pronto" %>
-						<br/>
-				  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %> 
-					<% end %>
-			<%- end -%>
-	
-	<% end %>
+		<p>
+		  <b>Sprint:</b>
+		  <%= textilize(@task.sprint.comments) %>
+		</p>
 
-	<p>
-		<b>Story case</b><br/>
-		<%= textilize(@task.story) %>
-	</p>
+		<p>
+		  <b>Item do Product Backlog:</b>
+		  <%= textilize(@task.backlog_item.description) %>
+		</p>
+
+		<p>
+		  <b>Status:</b>
+		  <%=h @task.status %>
+		</p>
+
+		<% if @task.status != "Aberto" %>
+	
+				<%- unless @task.user == nil -%>
+					<%= render_user_image(@task.user) %>
+					<br/>
+	
+					<%= link_to @task.user.name, user_path(@task.user) %> <br/>
+
+					  <b>Iniciada em:</b> <%= @task.init.strftime("%a, %d/%b %H:%M:%S") %>
+						<% if @task.status == "Pronto" %>
+							<br/>
+					  	<b>Finalizada em:</b> <%= @task.end.strftime("%a, %d/%b %H:%M:%S") %> 
+						<% end %>
+				<%- end -%>
+	
+		<% end %>
+
+		<p>
+			<b>Story case</b><br/>
+			<%= textilize(@task.story) %>
+		</p>
+	</div>
+	
+	<div class="comments">
+		<div id="comments_show_link">
+		<a href="javascript:showCommentsForm();">Novo comentário</a>
+		</div>
+		<div id="comments_form" style="display:none">
+			<a href="javascript:hiddenCommentsForm();">Cancelar comentário</a>
+			<%= render :partial => @comment = Comment.new %>
+		</div>
+		
+		<% comments = @task.comments.find(:all, :include => :user, :order => 'comments.created_at DESC') %>
+		
+		<% for comment in comments do %>
+		 <% c = cycle('even','odd') %>
+			<div id="comment">
+				<div id="comment_data" class="<%= c %>">
+					<%= comment.user.name.split(' ')[0] %> &nbsp; &nbsp;
+					<%= comment.created_at.strftime('%d/%b %H:%M:%S') %>
+				</div>
+				
+				<div id="comment_body" class="<%= c %>">
+					<%= textilize(comment.comment) %>
+				</div>
+			</div>
+		<% end %>
+		
+	</div>
+	
+	<div id="comment_users">
+		<p>Participantes: </p>
+		<% comments.group_by(&:user).each do |user, comment|%>
+			<%= render_user_image(user) %> <br/>
+		<% end %>
+	</div>
 </div>
+<br/>
+<br/>
+<br/>

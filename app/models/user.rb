@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :backlog_items
   has_many :tasks
   has_many :developers
+  has_many :comments
   
   attr_protected :image
   

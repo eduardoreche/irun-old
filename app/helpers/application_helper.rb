@@ -30,5 +30,26 @@ module ApplicationHelper
   		", :id => "tip"
   	
 	end
+	
+	def hash_colors(list)
+	 colors = [['3366FF','66CCFF'],
+	                ['660033','FF9999'],
+	                ['FF0033','FF9999'],
+	                ['996600','999900'],
+	                ['666600','66CC00'],
+	                ['000000','EFEFEF'],
+	                ['000066','0099CC'],
+	                ['9900CC','9999FF'],
+	                ['FF00CC','FFCCFF'],
+	                ['FF6600','FFFF99'],
+	                ['CCCCCC','FFFFFF'],
+	                ['663333','999966']]
+	  
+	  hash_colors = {}
+	  list.each_with_index do |value,key| 
+	    hash_colors[name] = colors[key]
+	  end
+	  
+	end
   
 end
