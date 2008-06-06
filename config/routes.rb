@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
                 
   map.resources :sprints do |sprints|
     sprints.resources :tasks do |tasks|
-      tasks.resources :comments
+      tasks.resources :comments, :member => {:download_attachment => :get}
     end
     sprints.resources :developers
     sprints.resources :member => {:activate => :get}

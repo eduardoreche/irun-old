@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
-    @comment = Comment.find(params[:id])
+    @comment = @task.comments.find(params[:id])
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
@@ -78,12 +78,22 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = @task.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
       format.html { redirect_to(sprint_task_comments_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def download_attachment
+    headers["Content-Type"] = "Multipart/mixed"
+    
+    @comment = @task.comments.find(params[:id])
+    
+    if @comment.attachment
+      send_file "#{RAILS_ROOT}/public/uploads/attachments/#{@comment.attachment}"
     end
   end
   

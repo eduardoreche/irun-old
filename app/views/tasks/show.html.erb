@@ -21,6 +21,11 @@
 		padding: 3px;
 	}
 	
+	div#comment_data img.user {
+		padding: 2px;
+		height: 25px;
+	}
+	
 	div#comment_data.even {
 		background-color: #4F578B;
 		color: #fff;
@@ -29,6 +34,11 @@
 	div#comment_data.odd {
 		background-color: #ccc;
 		color: #000;
+	}
+	
+	div#comment_data a {
+		text-decoration: none;
+		font-size: 9px;
 	}
 	
 	div#comment_body {
@@ -116,13 +126,15 @@
 	</div>
 	
 	<div class="comments">
-		<div id="comments_show_link">
-		<a href="javascript:showCommentsForm();">Novo comentário</a>
-		</div>
-		<div id="comments_form" style="display:none">
-			<a href="javascript:hiddenCommentsForm();">Cancelar comentário</a>
-			<%= render :partial => @comment = Comment.new %>
-		</div>
+		<% if @task.status != 'Pronto' %>
+			<div id="comments_show_link">
+			<a href="javascript:showCommentsForm();">Novo comentário</a>
+			</div>
+			<div id="comments_form" style="display:none">
+				<a href="javascript:hiddenCommentsForm();">Cancelar comentário</a>
+				<%= render :partial => @comment = Comment.new %>
+			</div>
+		<% end %>
 		
 		<% comments = @task.comments.find(:all, :include => :user, :order => 'comments.created_at DESC') %>
 		
@@ -130,6 +142,18 @@
 		 <% c = cycle('even','odd') %>
 			<div id="comment">
 				<div id="comment_data" class="<%= c %>">
+					<div style="float:right">
+					<%= link_to "#{image_tag 'attachment.png'} #{comment.attachment}", download_attachment_sprint_task_comment_path(@sprint,@task,comment), :class => c unless comment.attachment.blank? %>
+					</div>
+
+
+
+					<%	if comment.user.image.blank? %>
+			       <%= image_tag "/images/users/nobody.jpg", :class => 'user' %>
+			    <%  else %>
+			       <%= image_tag "/images/users/#{comment.user.image}", :class => 'user' %>
+			    <%  end %>
+					
 					<%= comment.user.name.split(' ')[0] %> &nbsp; &nbsp;
 					<%= comment.created_at.strftime('%d/%b %H:%M:%S') %>
 				</div>
@@ -142,13 +166,4 @@
 		
 	</div>
 	
-	<div id="comment_users">
-		<p>Participantes: </p>
-		<% comments.group_by(&:user).each do |user, comment|%>
-			<%= render_user_image(user) %> <br/>
-		<% end %>
-	</div>
 </div>
-<br/>
-<br/>
-<br/>

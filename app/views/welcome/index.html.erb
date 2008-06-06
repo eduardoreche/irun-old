@@ -102,6 +102,7 @@
 						<div id="postit">							
 							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
 							<b style="color:red"><%= task.hours %></b>
+							<%= "&nbsp; <b style='color:green'>#{task.comments.size}</b>" unless task.comments.size == 0 %>
 						</div>
 					<% end %>
 				</div>
@@ -110,7 +111,8 @@
 					<% for task in tasks.find_all{|t| t.status == "Alocado"} %>
 						<div id="postit">
 							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
-							<b style="color:red"><%= task.hours %></b>
+							<b style="color:red"><%= task.hours %></b> 
+							<%= "&nbsp; <b style='color:green'>#{task.comments.size}</b>" unless task.comments.size == 0 %>
 						</div>
 					<% end %>
 				</div>
@@ -119,7 +121,8 @@
 					<% for task in tasks.find_all{|t| t.status == "Pronto"} %>
 						<div id="postit">
 							<%= link_to (task.description.size > 25 ? task.description[0..25] +"..." : task.description), sprint_task_path(@sprint,task) %> <br/>
-							<b style="color:red"><%= task.hours %></b>
+							<b style="color:red"><%= task.hours %></b> 
+							<%= "&nbsp; <b style='color:green'>#{task.comments.size}</b>" unless task.comments.size == 0 %>
 						</div>
 					<% end %>
 				</div>

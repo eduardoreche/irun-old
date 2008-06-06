@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "backlog_items", :force => true do |t|
     t.string   "description"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 10) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attachment"
   end
 
   add_index "comments", ["task_id"], :name => "fk_comments_tasks"

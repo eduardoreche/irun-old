@@ -1,8 +1,12 @@
 <%= error_messages_for :comment %>
 
-<% form_for([@sprint,@task,@comment]) do |f| %>
+<% form_for([@sprint,@task,@comment],:html => {:multipart => true}) do |f| %>
 		<div align="left"><b>Comentário</b></div>
     <%= f.text_area :comment, :cols => 80, :rows => 6 %>
+		<br/>
+		<div align="left"><b>Anexo: </b>
+		<%= f.file_field :file %>
+		</div>
 		<br/>
     <%= f.submit "Enviar" %>
 <% end %>
