@@ -212,6 +212,7 @@ div#postit {
 }
 
 img {
+	border: 0px;
 	color: #fff;
 	background-color: none;
 	text-decoration: none;

@@ -2,6 +2,10 @@ class Comment < ActiveRecord::Base
   
   belongs_to :user
   
+  validates_presence_of :user
+  validates_presence_of :comment
+  validates_length_of :attachment, :within => 0..255
+  
   def file=(value)
     if value.size > 0
       t = Time.new

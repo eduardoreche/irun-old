@@ -30,6 +30,10 @@
 		background-color: #4F578B;
 		color: #fff;
 	}
+
+	div#comment_data.even a {
+		color: #fff;
+	}
 	
 	div#comment_data.odd {
 		background-color: #ccc;
@@ -39,6 +43,7 @@
 	div#comment_data a {
 		text-decoration: none;
 		font-size: 9px;
+		border: 0;
 	}
 	
 	div#comment_body {
@@ -136,7 +141,7 @@
 			</div>
 		<% end %>
 		
-		<% comments = @task.comments.find(:all, :include => :user, :order => 'comments.created_at DESC') %>
+		<% comments = @task.comments.find(:all, :include => :user, :order => 'comments.created_at') %>
 		
 		<% for comment in comments do %>
 		 <% c = cycle('even','odd') %>

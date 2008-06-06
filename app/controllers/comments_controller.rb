@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = @task.comments.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to(sprint_task_path(@sprint,@task)) }
       format.xml  { render :xml => @comment }
     end
   end
