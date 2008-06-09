@@ -1,4 +1,5 @@
 public/images/users/*
-public/uploads/*
+public/uploads/attachments/*
+vendor/**/*
 log/*.log
 tmp/**/*
