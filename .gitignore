@@ -1,4 +1,7 @@
 public/images/users/*
-public/uploads/*
+public/uploads/attachments/*
+vendor/**/*
 log/*.log
+log/development.log
 tmp/**/*
+README
