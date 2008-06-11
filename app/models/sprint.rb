@@ -37,7 +37,7 @@ class Sprint < ActiveRecord::Base
     developer_hours.each do |dev|
       dev[0] = dev[0].split(' ')[0]
       dev[1] = dev[1]*100/concluded_tasks
-      end
+    end
   end
     
 end

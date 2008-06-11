@@ -17,13 +17,13 @@ class SprintsController < ApplicationController
   # GET /sprints/1.xml
   def show
     @sprint = Sprint.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @sprint }
     end
   end
-
+  
   # GET /sprints/new
   # GET /sprints/new.xml
   def new

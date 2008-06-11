@@ -10,9 +10,9 @@ module CssGraphs
   # NOTE: Normalizes data to fit in the viewable area instead of being fixed to 100.
   
   def bar_graph(data=[])
-    width = 378
+    width = 450
     height = 150
-    colors = %w(#ce494a #efba29 #efe708 #5a7dd6 #73a25a)
+    colors = %w(#ce494a #efba29 #efe708 #5a7dd6 #73a25a #9EE17E)
     floor_cutoff = 24 # Pixels beneath which values will not be drawn in graph
     data_max = data.inject(0) { |memo, array| array.last > memo ? array.last : memo }
 
