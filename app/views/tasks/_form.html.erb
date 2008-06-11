@@ -34,12 +34,23 @@
   </p>
 
 	<% if @task.new_record? %>
+<<<<<<< HEAD:app/views/tasks/_form.html.erb
 		<%= f.hidden_field :status, :value => "Aberto" %>
+=======
+		<%= f.hidden_field :status, :value => 'Aberto' %>
+>>>>>>> master:app/views/tasks/_form.html.erb
 	<% else %>
+<<<<<<< HEAD:app/views/tasks/_form.html.erb
   <p>
     <b>Status</b><br />
 		<%= f.select :status, ["Aberto", "Alocado", "Pronto"] %>
   </p>
+=======
+	  <p>
+	    <b>Status</b><br />
+	    <%= f.select :status, ["Aberto", "Alocado", "Pronto"] %>
+	  </p>
+>>>>>>> master:app/views/tasks/_form.html.erb
 	<% end %>
   <p>
     <b>Story case</b><br />
