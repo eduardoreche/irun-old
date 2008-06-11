@@ -25,19 +25,22 @@
 	
   <p>
     <b>Descrição</b><br />
-    <%= f.text_field :description, :size => 60 %>
+    <%= f.text_field :description, :size => 62 %>
   </p>
 
   <p>
     <b>Previsão de horas</b><br />
-    <%= f.text_field :hours %>
+    <%= f.text_field :hours, :size => 5 %>
   </p>
 
+	<% if @task.new_record? %>
+		<%= f.hidden_field :status, :value => "Aberto" %>
+	<% else %>
   <p>
     <b>Status</b><br />
-    <%= f.select :status, ["Aberto", "Alocado", "Pronto"] %>
+		<%= f.select :status, ["Aberto", "Alocado", "Pronto"] %>
   </p>
-
+	<% end %>
   <p>
     <b>Story case</b><br />
     <%= f.text_area :story, :rows => 7, :cols => 60 %>
